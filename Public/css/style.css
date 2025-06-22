@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header>.nav>a {
+  color: white;
+  background-color: #3b82f6;
+  padding: 0.1rem 0.4rem;
+  border-radius: 5px;
+}
+
+header {
+  background: #3b82f6;
+  color: white;
+  padding: 0rem 2rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+header>a {
+  padding: 1rem 0;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+/* header > nav {
+    display: flex;
+    height: 50px; /* ejemplo: altura fija para mostrar comportamiento *
+    background-color: #333;
+  }
+  header > nav > a {
+    flex: 1; /* que ocupe espacio igual entre enlaces *
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    padding: 0; /* evita que el padding afecte altura *
+    height: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+  } */
+
+
+
+header>nav {
+  display: flex;
+  gap: 0.8rem;
+}
+
+header>nav>a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;
+  padding-inline: 0.2rem;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+}
+
+section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.05);
+  padding: 1.5rem;
+  /* margin-bottom: 2rem; */
+}
+
+/* Tabla usuarios */
+
+/* 
+>>> Tabla
+ */
+.dataTable{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+thead {
+  background: #3b82f6;
+  color: white;
+}
+
+th,
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+tbody tr:hover {
+  background: #e0f0ff;
+}
+
+.paginador{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.paginador>a{
+  flex: 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  padding: 2px;
+  border: 1px solid #3b82f6;
+  max-height: min-content;
+  border-radius: 9999px;
+}
+
+.paginador>.active{
+  background-color: #2563eb;
+  color: white;
+  font-weight: bolder;
+}
+
+/* 
+>>> Formulario 
+*/
+form {
+  display: grid;
+  gap: 1rem;
+  /* flex-wrap: wrap; */
+  /* flex-direction: column; */
+  gap: 2rem;
+  /* margin-top: 1rem; */
+  /* flex: 1; */
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem
+}
+
+label {
+  flex: 1 1 150px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+}
+
+select,
+input[type="text"],
+input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  background: #3b82f6;
+  border: none;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background 0.3s;
+  grid-column: 2 / 3;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+/* Gráficos */
+#charts {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+canvas {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.05);
+  flex: 1 1 300px;
+  max-width: 600px;
+}
+
+
+
+
+
+/* Responsive */
+@media (max-width: 870px) {
+  form {
+    /* flex-direction: column; */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  form {
+    grid-template-columns: 1fr;
+
+    & button {
+      grid-column: 1 / 2;
+    }
+  }
+}
+
+
+/* button,
+input,
+optgroup,
+select,
+textarea {
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+button,
+select {
+	text-transform: none;
+}
+[role='button'] {
+	cursor: pointer;
+}
+select {
+	word-wrap: normal;
+}
+select:disabled {
+	opacity: 1;
+} */
