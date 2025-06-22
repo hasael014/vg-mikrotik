@@ -19,6 +19,7 @@ session_start();
  * 
  */
 
+ include_once __DIR__.'/../App/Config.php';
 
 include_once __DIR__.'/../autoload.php';
 

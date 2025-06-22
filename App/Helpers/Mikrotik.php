@@ -14,7 +14,7 @@ class Mikrotik
 
         $rb = new RouterosAPI;
         try {
-            if ($rb->connect('ip', 'usernanme', 'password')) {
+            if ($rb->connect(ip_router, user_router, passwd_router)) {
                 return $rb;
             } else {
                 new Exception("Error Processing Request", 1);
