@@ -1,0 +1,151 @@
+@page {
+    size: letter landscape;
+    margin: 0.13in
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    /* max-width: 11in; */
+    /* min-height: 8.5in; */
+    /* border: solid 1px red; */
+    font-family: 'Arial', sans-serif;
+    background: none;
+    /* color: black; */
+    /* font-size: 12pt; */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    /* gap: 0.2rem; */
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+    /* align-content: center; */
+    /* justify-content: center; */
+}
+
+.voucher {
+    /* width: 1.75in; */
+    /* max-width: max-content; */
+    /* height: 0.78in; */
+    padding: 4px;
+    page-break-inside: avoid;
+    border: 1px solid #e2e8f0;
+    display: inline-block;
+    text-align: center;
+}
+
+.cut-line {
+    border-top: 1px dashed #cbd5e0;
+    margin: 8px 0;
+}
+
+.plan-basic {
+    background-color: #ebf8ff;
+    border-left: 4px solid #3182ce;
+}
+
+.plan-standard {
+    background-color: #f0fff4;
+    border-left: 4px solid #38a169;
+}
+
+.plan-premium {
+    background-color: #fffaf0;
+    border-left: 4px solid #dd6b20;
+}
+
+.plan-unlimited {
+    background-color: #faf5ff;
+    border-left: 4px solid #9f7aea;
+}
+
+/**
+* estilos de tailwind
+**/
+
+.p-3{
+    padding: 0.75rem;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+.flex{
+    display: flex;
+}
+
+.text-blue-600{
+    color: rgb(37 99 235 / 1);
+}
+
+.text-blue-800{
+    color: rgb(30 64 175 / 1);
+}
+
+.font-bold{
+    font-weight: 700;
+}
+
+.text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.text-gray-600{
+    color: rgb(75 85 99 / 1);
+}
+
+.text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.my-2{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.text-3x1{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+.text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+.font-mono{
+    font-family: ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+}
+
+.p-1{
+    padding: 0.25rem;
+}
+
+.bg-white{
+    background-color: rgb(255 255 255 / 1);
+}
+
+.border{
+    border-width: 1px;
+}
+
+.mt-1{
+    margin-top: 0.25rem;
+}
+
+.text-center{
+    text-align: center;
+}

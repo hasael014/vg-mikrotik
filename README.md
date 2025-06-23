@@ -9,13 +9,16 @@ Crea el archivo Config.php en el directorio ./App/Config.php
 <?php
 
 $variables = [
-    "ip_router"=>"ip",
-    "user_router"=>"username",
-    "passwd_router"=>"contraseña (si tiene una)"
+    "ip_router" => "ip_del_router",
+    "user_router" => "nombre_de_usuario",
+    "passwd_router" => "contraseña" // Dejar en blanco si no tiene
 ];
 
-foreach($variables as $key => $value){
- define($key, $value);
+foreach ($variables as $key => $value) {
+    define($key, $value);
 }
+
+?>
+
 
 ```

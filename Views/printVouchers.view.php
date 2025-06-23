@@ -129,8 +129,9 @@ $Users = [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Print Vouchers</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <style>
+    <link rel="stylesheet" href="/css/vouchers.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- <style>
         @page {
             size: letter landscape;
             margin: 0.13in
@@ -147,11 +148,12 @@ $Users = [];
             /* max-width: 11in; */
             /* min-height: 8.5in; */
             /* border: solid 1px red; */
+            font-family: 'Arial', sans-serif;
             background: none;
             color: black;
             font-size: 12pt;
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             /* flex-direction: row; */
             /* flex-wrap: wrap; */
             /* align-items: center; */
@@ -164,51 +166,118 @@ $Users = [];
             /* max-width: max-content; */
             /* height: 0.78in; */
             page-break-inside: avoid;
-            border: 1px solid black;
+            border: 1px solid #e2e8f0;
             display: inline-block;
             text-align: center;
         }
 
-        .url {
-            background-color: #000000;
-            color: white;
-            padding: 0 4px
+        .cut-line {
+            border-top: 1px dashed #cbd5e0;
+            margin: 8px 0;
         }
 
-        .code {
-            display: grid;
-            gap: 2px;
-            justify-items: center;
+        .plan-basic {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
         }
 
-        .code>b {
-            max-width: max-content;
-            color: white;
-            background-color: grey;
-            padding: 2px 5px;
-            border-radius: 9999px
+        .plan-standard {
+            background-color: #f0fff4;
+            border-left: 4px solid #38a169;
         }
-    </style>
+
+        .plan-premium {
+            background-color: #fffaf0;
+            border-left: 4px solid #dd6b20;
+        }
+
+        .plan-unlimited {
+            background-color: #faf5ff;
+            border-left: 4px solid #9f7aea;
+        }
+    </style> -->
 </head>
 
 <body>
 
+    <!-- <div class='voucher plan-basic'>
+  -- <div class='voucher plan-basic p-3 flex flex-col justify-between'> --
+    <div>
+      <h2 class='text-xl font-bold text-blue-800'>PLAN BÁSICO</h2>
+      <p class='text-sm text-gray-600'>1 hora de conexión</p>
+      <div class='my-2'>
+        <span class='text-3xl font-bold text-blue-600'>$1.00</span>
+      </div>
+    </div>
+    <div>
+      <p class='text-xs font-mono bg-white p-1 border border-gray-300'>Código: W1H-<span class='font-bold'>X3F9K2</span>
+      </p>
+      !-- <p class='text-xs mt-1'>Velocidad: 6Mbps</p> --
+    </div>
+    <div>
+      <div class='cut-line'></div>
+      <p class='text-xs text-center'>Portal: <span class='font-mono'>wifi.example.com/auth</span></p>
+    </div>
+  </div> -->
+
 
     <?php
 
-    foreach (generateNumericVouchers($_POST['cantidad'], $_POST['formato'], $_POST['longitud']) as $voucher) {
-        $newVoucher = [
-            'name' => $voucher, // Nombre del usuario
-            'comment' => 'Usuario por visel-isp', // Comentario (opcional)
-            'limit-uptime' => $_POST['duracion'], // Límite de tiempo de conexión (opcional)
-            'profile' => $_POST['profile'], // Perfil del usuario (opcional)
-            'server' => $_POST['server'] // Servidor al que puede acceder (opcional)
-        ];
-        Functions::_addVoucher($newVoucher);
-        echo "<div class='voucher'>
-    <p class='url'>" . $_POST['ssl'] . "://" . $_POST['host'] . "</p>
-    <p class='code'>Código: <b>" . $voucher . "</b></p>
-    <p class='precio'>$ " . $_POST['precio'] . " MXN</p>
+    // print_r($_POST);
+    switch ($_POST['duracion']) {
+        case '1h':
+            $header = "<div class='voucher plan-basic'>";
+            $title = "<h2 class='text-xl font-bold text-blue-800'>PLAN BÁSICO</h2>";
+            $duration = "<p class='text-sm text-gray-600'>" . $_POST['duracion'] . " de conexión</p>";
+            $desc = "";
+            break;
+        case '3h':
+            $header = "<div class='voucher plan-standard'>";
+            $title = "<h2 class='text-xl font-bold text-green-800'>PLAN ESTÁNDAR</h2>";
+            $duration = "<p class='text-sm text-gray-600'>" . $_POST['duracion'] . " de conexión</p>";
+            $desc = "";
+            break;
+        case '1d':
+            $header = "<div class='voucher plan-premium'>";
+            $title = "<h2 class='text-xl font-bold text-orange-800'>PLAN PREMIUM</h2>";
+            $duration = "<p class='text-sm text-gray-600'>" . $_POST['duracion'] . " de conexión</p>";
+            $desc = "";
+            break;
+        default:
+            $header = "<div class='voucher plan-unlimited'>";
+            $title = "<h2 class='text-xl font-bold text-purple-800'>PLAN FLEX</h2>";
+            $duration = "<p class='text-sm text-gray-600'>" . $_POST['duracion'] . " pausables</p>";
+            $desc = "<p class='text-xs mt-1'>*Uso pausable cuando no estés conectado</p>";
+            break;
+    }
+
+    // foreach (generateNumericVouchers(63, "numero", 6) as $voucher) {
+        foreach (generateNumericVouchers($_POST['cantidad'], $_POST['formato'], $_POST['longitud']) as $voucher) {
+        // $newVoucher = [
+        //     'name' => $voucher, // Nombre del usuario
+        //     'comment' => date("Y-M-d_H:i:s"), // Comentario (opcional)
+        //     'limit-uptime' => $_POST['duracion'], // Límite de tiempo de conexión (opcional)
+        //     'profile' => $_POST['profile'], // Perfil del usuario (opcional)
+        //     'server' => $_POST['server'] // Servidor al que puede acceder (opcional)
+        // ];
+        // Functions::_addVoucher($newVoucher);
+        echo "$header
+        <div>
+            $title
+            $duration
+            <div class='my-2'>
+                <span class='text-3xl font-bold text-blue-600'>$ " . $_POST['precio'] . ".00</span>
+            </div>
+        </div>
+        <div>
+            <p class='text-xs font-mono bg-white p-1 border border-gray-300'>Código: <span class='font-bold'>" . $voucher . "</span>
+            </p>
+            $desc
+        </div>
+        <div>
+            <div class='cut-line'></div>
+            <p class='text-xs text-center'>Portal: <span class='font-mono'>" . $_POST['host'] . "</span></p>
+        </div>
     </div>";
     }
 

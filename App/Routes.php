@@ -18,7 +18,7 @@ Router::get('/app/vouchers/{page}', MainController::class, 'Vouchers');
 Router::post('/app/voucher/create', MainController::class, 'VouchersCreate');
 Router::get('/app/profiles', MainController::class, 'listProfiles');
 Router::get('/app/servers', MainController::class, 'listServers');
-// Router::get('/app/voucher/create', MainController::class, 'VouchersCreate');
+Router::get('/app/voucher/create', MainController::class, 'VouchersCreate');
 
 /**
  * 
