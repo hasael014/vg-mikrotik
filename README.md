@@ -1,11 +1,12 @@
 # vg-mikrotik
-sistema web con la que se puede crear vouchers para routers de mikrotik y tambien imprimir los vouchers en tamaño carta.
 
+Este es un sistema web que permite crear y gestionar vouchers para routers MikroTik, así como imprimir los vouchers en tamaño carta.
 
-### Creacion del archivo Config.php
-Crea el archivo Config.php en el directorio ./App/Config.php
-```
+## Creación del archivo Config.php
 
+Para configurar la aplicación, crea el archivo `Config.php` en el directorio `./App/Config.php` con el siguiente contenido:
+
+```php
 <?php
 
 $variables = [
@@ -19,6 +20,4 @@ foreach ($variables as $key => $value) {
 }
 
 ?>
-
-
 ```
