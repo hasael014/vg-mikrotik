@@ -1,58 +1,6 @@
 <?php
 
 use App\Helpers\Functions;
-// print_r($_POST);
-
-/*function generateNumericVouchers($totlaVouchers, $lenght)
-{
-    $characters = '0123456789';
-    $charactersLenght = strlen($characters);
-    $vouchers = [];
-    $users = Functions::_getUsers();
-    $exist = [];
-
-    foreach ($users as $user) {
-        $exist[] = $user['name'];
-    }
-
-    for ($gg = 0; $gg < $totlaVouchers; $gg++) {
-
-        do {
-
-            $voucherCode = '';
-            // Generar el codigó del voucher 
-            for ($is = 0; $is < $lenght; $is++) {
-                $voucherCode .= $characters[rand(0, $charactersLenght - 1)];
-            }
-            // Esto asignará true a $unique si $voucherCode no está en ninguno de los dos arrays, y false en caso contrario.
-            $unique = !(in_array($voucherCode, $vouchers) || in_array($voucherCode, $exist));
-
-        } while ($unique);
-
-        $vouchers[] = $voucherCode;
-
-    }
-
-    return $vouchers;
-
-}*/
-
-//     switch (charType) {
-//         case 'numero':
-//             characters = '0123456789';
-//             break;
-//         case 'letras':
-//             characters = 'abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ';
-//             break;
-//         case 'alfanumerico':
-//             characters = '0123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ';
-//             break;
-//         // case 'custom':
-//         //     characters = customChars.toLowerCase();
-//         //     break;
-//         default:
-//             characters = '0123456789';
-//     }
 
 function generateNumericVouchers($totalVouchers, $type, $length)
 {
@@ -123,103 +71,16 @@ $Users = [];
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Print Vouchers</title>
     <link rel="stylesheet" href="/css/vouchers.css">
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <!-- <style>
-        @page {
-            size: letter landscape;
-            margin: 0.13in
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-            box-sizing: border-box;
-        }
-
-        body {
-            /* max-width: 11in; */
-            /* min-height: 8.5in; */
-            /* border: solid 1px red; */
-            font-family: 'Arial', sans-serif;
-            background: none;
-            color: black;
-            font-size: 12pt;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            /* flex-direction: row; */
-            /* flex-wrap: wrap; */
-            /* align-items: center; */
-            /* align-content: center; */
-            /* justify-content: center; */
-        }
-
-        .voucher {
-            /* width: 1.75in; */
-            /* max-width: max-content; */
-            /* height: 0.78in; */
-            page-break-inside: avoid;
-            border: 1px solid #e2e8f0;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .cut-line {
-            border-top: 1px dashed #cbd5e0;
-            margin: 8px 0;
-        }
-
-        .plan-basic {
-            background-color: #ebf8ff;
-            border-left: 4px solid #3182ce;
-        }
-
-        .plan-standard {
-            background-color: #f0fff4;
-            border-left: 4px solid #38a169;
-        }
-
-        .plan-premium {
-            background-color: #fffaf0;
-            border-left: 4px solid #dd6b20;
-        }
-
-        .plan-unlimited {
-            background-color: #faf5ff;
-            border-left: 4px solid #9f7aea;
-        }
-    </style> -->
 </head>
 
 <body>
-
-    <!-- <div class='voucher plan-basic'>
-  -- <div class='voucher plan-basic p-3 flex flex-col justify-between'> --
-    <div>
-      <h2 class='text-xl font-bold text-blue-800'>PLAN BÁSICO</h2>
-      <p class='text-sm text-gray-600'>1 hora de conexión</p>
-      <div class='my-2'>
-        <span class='text-3xl font-bold text-blue-600'>$1.00</span>
-      </div>
-    </div>
-    <div>
-      <p class='text-xs font-mono bg-white p-1 border border-gray-300'>Código: W1H-<span class='font-bold'>X3F9K2</span>
-      </p>
-      !-- <p class='text-xs mt-1'>Velocidad: 6Mbps</p> --
-    </div>
-    <div>
-      <div class='cut-line'></div>
-      <p class='text-xs text-center'>Portal: <span class='font-mono'>wifi.example.com/auth</span></p>
-    </div>
-  </div> -->
-
 
     <?php
 
@@ -252,15 +113,15 @@ $Users = [];
     }
 
     // foreach (generateNumericVouchers(63, "numero", 6) as $voucher) {
-        foreach (generateNumericVouchers($_POST['cantidad'], $_POST['formato'], $_POST['longitud']) as $voucher) {
-        // $newVoucher = [
-        //     'name' => $voucher, // Nombre del usuario
-        //     'comment' => date("Y-M-d_H:i:s"), // Comentario (opcional)
-        //     'limit-uptime' => $_POST['duracion'], // Límite de tiempo de conexión (opcional)
-        //     'profile' => $_POST['profile'], // Perfil del usuario (opcional)
-        //     'server' => $_POST['server'] // Servidor al que puede acceder (opcional)
-        // ];
-        // Functions::_addVoucher($newVoucher);
+    foreach (generateNumericVouchers($_POST['cantidad'], $_POST['formato'], $_POST['longitud']) as $voucher) {
+        $newVoucher = [
+            'name' => $voucher, // Nombre del usuario
+            'comment' => date("Y-M-d_H:i:s"), // Comentario (opcional)
+            'limit-uptime' => $_POST['duracion'], // Límite de tiempo de conexión (opcional)
+            'profile' => $_POST['profile'], // Perfil del usuario (opcional)
+            'server' => $_POST['server'] // Servidor al que puede acceder (opcional)
+        ];
+        Functions::_addVoucher($newVoucher);
         echo "$header
         <div>
             $title
@@ -281,11 +142,6 @@ $Users = [];
     </div>";
     }
 
-    // print_r($Users);
-    
-    // for ($cant = 0; $cant < $_POST['cantidad']; $cant++){
-// }
-    
     ?>
 </body>
 
