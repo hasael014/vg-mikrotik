@@ -95,32 +95,32 @@ $plans = $class->forVoucher()['plan'];
         const $server = $('#server'), $pre_fix = $('#pre-fix'), $prefix = $('#prefix'), $host = $('#host')
         const $host_def = $('#host-def').hide()
         const $profile = $('#profile'), $duracion = $('#duracion')
+        const $cantidad = $('#cantidad')
 
         const getTimeout = () => {
             if ($server.is(':selected') !== "") {
                 let valSelected = $('#profile :selected').val()
                 plan.forEach(plans => {
 
-                    // console.log(plans['name'])
                     if (plans['name'] === 'default') {
-                        // console.log(true)
                         $duracion.val('0:0:0')
-                        // $duracion.attr('value', '0:0:0')
                     } else {
                         if (plans['name'] === valSelected) {
                             $duracion.val(plans['session-timeout'])
-                            // $duracion.attr('value', plans['session-timeout'])
+                        }
+                        if (valSelected === "6H_pausado") {
+                            $cantidad.val(24)
+                        }else{
+                            $cantidad.val(30)
                         }
                     }
                 });
             } else {
                 console.log('no esta selected');
             }
-            // console.log($server.is(':selected'))
         }
 
         const getServer = () => {
-            // console.log($server.val())
             const valServer = $server.val()
             if (valServer === "all") {
                 $host.removeAttr('readonly')
@@ -140,7 +140,6 @@ $plans = $class->forVoucher()['plan'];
 
         function subfijo() {
             let check = document.getElementById('pre-fix')
-            // if (check.checked === true) {
             if ($pre_fix.is(':checked')) {
                 $prefix.removeAttr('style')
                 $prefix.attr('required', true)
@@ -151,50 +150,12 @@ $plans = $class->forVoucher()['plan'];
 
             }
         }
-
-
-        // function generateCode(pinLength, charType, customChars) {
-        //     let characters = '';
-
-        //     switch (charType) {
-        //         case 'numero':
-        //             characters = '0123456789';
-        //             break;
-        //         case 'letras':
-        //             characters = 'abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ';
-        //             break;
-        //         case 'alfanumerico':
-        //             characters = '0123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ';
-        //             break;
-        //         // case 'custom':
-        //         //     characters = customChars.toLowerCase();
-        //         //     break;
-        //         default:
-        //             characters = '0123456789';
-        //     }
-
-        //     let code = '';
-        //     for (let i = 0; i < pinLength; i++) {
-        //         code += characters.charAt(Math.floor(Math.random() * characters.length));
-        //     }
-
-        //     return code;
-        // }
-
-
-        // $('#usuario-form').submit(function (event) {
-        //     event.preventDefault();
-
-        //     const valFormato = $('#formato').val(), valServer = $server.val(), valProfile = $('#profile').val(), valLongitud = $('#longitud').val(), valCantidad = $('#cantidad').val(), valDuracion = $('#duracion').val().trim(), valPrecio = $('#precio').val(), valHost = $('$host').val().trim()
-
-
-
-        // })
-
+        
         $server.change(getServer)
         $profile.change(getTimeout)
 
-        $pre_fix.on('click', subfijo)
+        // $pre_fix.on('click', subfijo)
+        $pre_fix.click(subfijo)
     })
 
 </script>

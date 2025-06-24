@@ -367,8 +367,13 @@ class Functions
             $pagination .= '<div class="paginador">';
             $pagination .= ($page > 1) ? "<a href='$path?page=" . ($page - 1) . "'>Ant.</a>" : '';
 
-            if ($page > 4) {
-                $pagination .= "<a href='$path?page=1'>01</a><span>...</span>";
+            if ($page > 3) {
+                $pagination .= "<a href='$path?page=1'>01</a>";
+            }
+
+        
+            if($page > 4){
+                $pagination .= "<span>...</span>";
             }
 
             $start = max(1, $page - 2);
@@ -379,8 +384,12 @@ class Functions
                 $pagination .= "<a href='$path?page=$i' $active>" . str_pad($i, 2, '0', STR_PAD_LEFT) . "</a>";
             }
 
+            if ($page < $totalPages - 3) {
+                $pagination .= "<span>...</span>";
+            }
+
             if ($page < $totalPages - 2) {
-                $pagination .= "<span>...</span><a href='$path?page=$totalPages'>$totalPages</a>";
+                $pagination .= "<a href='$path?page=$totalPages'>$totalPages</a>";
             }
             $pagination .= ($page < $totalPages) ? "<a href='$path?page=" . ($page + 1) . "'>Sig.</a>" : '';
             $pagination .= "</div>";

@@ -23,8 +23,8 @@ foreach ($variables as $key => $value) {
 ```
 
 ## Ejecutar el sistema web
-Para poder utilizar el esistema, puedes utilizar `xampp` o levantar un servidor de desarrollo local.
+Para poder utilizar el esistema, ,puedes utilizar `xampp` o levantar un servidor de desarrollo local desde la terminal.
 
-```bash
+```sh
 php -S localhost:8000 -t "Public"
 ```
