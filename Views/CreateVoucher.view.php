@@ -58,7 +58,7 @@ $plans = $class->forVoucher()['plan'];
         </div>
         <div class="form-group">
             <label for="cantidad">Cantidad</label>
-            <input type="number" name="cantidad" id="cantidad" title="(1 - 500)" min="1" max="500" value="63" required>
+            <input type="number" name="cantidad" id="cantidad" title="(1 - 500)" min="1" max="500" value="30" required>
             <span>(1 - 500)</span>
         </div>
         <input type="hidden" name="duracion" value="0" id="duracion">
@@ -90,7 +90,7 @@ $plans = $class->forVoucher()['plan'];
         const server = datos[0]
         const plan = datos[1]
 
-        console.log(plan[1])
+        // console.log(plan[1])
 
         const $server = $('#server'), $pre_fix = $('#pre-fix'), $prefix = $('#prefix'), $host = $('#host')
         const $host_def = $('#host-def').hide()
@@ -103,12 +103,12 @@ $plans = $class->forVoucher()['plan'];
                 plan.forEach(plans => {
 
                     if (plans['name'] === 'default') {
-                        $duracion.val('0:0:0')
+                        $duracion.val('0:0:1')
                     } else {
                         if (plans['name'] === valSelected) {
                             $duracion.val(plans['session-timeout'])
                         }
-                        if (valSelected === "6H_pausado") {
+                        if (valSelected === "6H_pausado" || valSelected === "3H_corrido") {
                             $cantidad.val(24)
                         }else{
                             $cantidad.val(30)
