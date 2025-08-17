@@ -121,7 +121,7 @@ $Users = [];
             'profile' => $_POST['profile'], // Perfil del usuario (opcional)
             'server' => $_POST['server'] // Servidor al que puede acceder (opcional)
         ];
-        Functions::_addVoucher($newVoucher);
+        // Functions::_addVoucher($newVoucher);
         echo "$header
         <div>
             $title

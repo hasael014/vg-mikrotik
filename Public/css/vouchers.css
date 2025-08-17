@@ -34,7 +34,8 @@ body {
     /* height: 0.78in; */
     padding: 4px;
     page-break-inside: avoid;
-    border: 1px solid #e2e8f0;
+    border: 0.5px solid #000000;
+    /* border: 1px solid #e2e8f0; */
     display: inline-block;
     text-align: center;
 }
